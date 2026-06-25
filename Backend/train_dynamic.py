@@ -1,3 +1,9 @@
+"""
+Train Model CNN-LSTM
+"""
+
+
+
 import os
 import numpy as np
 import json
