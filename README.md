@@ -106,9 +106,10 @@ graph TD
 
 ## Tampilan Website
 # Home
-![alt text](frontend/assets/HomePageWeb.png)
+![Tampilan Home](frontend/assets/HomePage_web.png)
+
 # Prediction
-![alt text](frontend/assets/PredictionPageWeb.png)
+![Tampilan Prediction](frontend/assets/PredictionPage_web.png)
+
 # About
-![alt text](frontend/assets/AboutPageWeb.png)
-#
+![Tampilan About](frontend/assets/AboutPage_web.png)
