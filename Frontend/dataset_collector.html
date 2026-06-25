@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Dataset Mandiri | BE COOL</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- MediaPipe dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+    <script src="js/dataset_collector.js" defer></script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="text-teal-600 text-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-hands-asl-interpreting"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-teal-900">BE COOL</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-600">
+                <a href="index.html" class="hover:text-teal-600 transition">Beranda</a>
+                <a href="prediction_hand.html" class="hover:text-teal-600 transition">Prediksi</a>
+                <a href="dataset_collector.html" class="text-teal-600 font-semibold transition">Buat Dataset</a>
+                <a href="about.html" class="hover:text-teal-600 transition">Tentang Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. MAIN WORKSPACE -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8 space-y-2">
+            <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Kolektor Dataset</h1>
+            <p class="text-slate-500 text-sm">Ambil koordinat gerakan tangan (statis atau dinamis) untuk melatih model AI kustom Anda sendiri.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+            <!-- LEFT COLUMN: LIVE CAMERA INPUT WITH COUNTDOWN & INDICATORS (7 Cols) -->
+            <section class="lg:col-span-7 space-y-4">
+                <div class="bg-slate-950 rounded-2xl shadow-lg border border-slate-800 overflow-hidden relative group">
+                    
+                    <!-- Mode Active Badge -->
+                    <div class="absolute top-4 left-4 z-20 bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide border border-slate-700 text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse" id="status-dot"></span>
+                        <span id="active-mode-badge">Mode: Statis (Huruf/Angka)</span>
+                    </div>
+
+                    <!-- Countdown overlay -->
+                    <div id="countdown-overlay" class="absolute inset-0 bg-black/60 z-30 flex flex-col items-center justify-center text-white hidden transition-all duration-300">
+                        <span id="countdown-text" class="text-8xl font-black text-teal-400 scale-75 animate-bounce">3</span>
+                        <span class="text-sm font-semibold tracking-wider text-slate-300 uppercase mt-4" id="countdown-subtext">Persiapkan Posisi Tangan Anda</span>
+                    </div>
+
+                    <!-- Recording Progress overlay -->
+                    <div id="recording-overlay" class="absolute inset-0 bg-black/40 z-30 flex flex-col items-center justify-center text-white hidden">
+                        <div class="w-16 h-16 rounded-full border-4 border-red-500 border-t-transparent animate-spin mb-4"></div>
+                        <span class="text-lg font-bold text-red-500 animate-pulse uppercase tracking-wider">Merekam Gerakan...</span>
+                        <span id="recording-progress" class="text-xs text-slate-300 mt-1">Frame: 0 / 30</span>
+                    </div>
+
+                    <!-- Webcam Box -->
+                    <div class="relative w-full aspect-[16/10] bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <!-- Video Feed -->
+                        <video id="webcam" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-500 transform -scale-x-100" autoplay playsinline muted></video>
+                        <!-- Canvas overlay for landmarks -->
+                        <canvas id="canvas" class="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"></canvas>
+                        
+                        <!-- Fallback jika Kamera Mati -->
+                        <div id="webcam-fallback" class="absolute inset-0 w-full h-full bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-4 hidden">
+                            <i class="fa-solid fa-video-slash text-5xl text-slate-600"></i>
+                            <span class="text-xs font-semibold">Menginisialisasi Kamera...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guidance Info Box -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex gap-3 text-blue-900">
+                    <i class="fa-solid fa-circle-info text-lg mt-0.5 text-blue-500 flex-shrink-0"></i>
+                    <div class="text-xs space-y-1 leading-relaxed">
+                        <p class="font-bold">Panduan Pengambilan Dataset:</p>
+                        <ul class="list-disc list-inside space-y-1 text-blue-700">
+                            <li>Isi kolom <strong>Label</strong> dengan huruf, angka, atau kata yang akan diambil datanya.</li>
+                            <li>Tekan tombol Ambil untuk memulai. Sistem akan memberikan **jeda hitung mundur 3 detik** untuk memposisikan tangan Anda di depan kamera sebelum perekaman dimulai.</li>
+                            <li>Pada <strong>Mode Statis</strong>, posisikan tangan Anda diam pada detik terakhir.</li>
+                            <li>Pada <strong>Mode Dinamis</strong>, lakukan gerakan tangan yang mengalir tepat saat status berubah menjadi "Merekam Gerakan".</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: CONFIG, STATS & AI RETRAINING (5 Cols) -->
+            <section class="lg:col-span-5 space-y-6">
+
+                <!-- Card 1: Configuration & Action -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Pengaturan Koleksi</h2>
+                    
+                    <!-- Tabs Mode -->
+                    <div class="flex bg-slate-100 p-1 rounded-xl">
+                        <button id="tab-static" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white text-teal-800 shadow-sm transition">
+                            <i class="fa-solid fa-font mr-1.5"></i> Statis (Huruf/Angka)
+                        </button>
+                        <button id="tab-dynamic" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 hover:text-slate-800 transition">
+                            <i class="fa-solid fa-exchange-alt mr-1.5"></i> Dinamis (Kata Gerakan)
+                        </button>
+                    </div>
+
+                    <!-- Label Input -->
+                    <div class="space-y-1.5">
+                        <label for="label-input" class="text-xs font-bold text-slate-700">Nama Label (Sensitif Kapital):</label>
+                        <input type="text" id="label-input" placeholder="Contoh: A, B, Halo, Tolong" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-100 transition">
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <button id="btn-collect" class="w-full py-4 bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-teal-600/10 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-camera"></i>
+                        <span id="btn-collect-text">Ambil Landmark (Jeda 3d)</span>
+                    </button>
+                </div>
+
+                <!-- Card 2: Dataset Statistics Dashboard -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Statistik Dataset</h2>
+                        <span class="text-xs font-bold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-full" id="stats-total-badge">Total: 0 Sampel</span>
+                    </div>
+
+                    <!-- Statistics List -->
+                    <div class="max-h-48 overflow-y-auto pr-1">
+                        <table class="w-full text-xs text-left">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-100">
+                                    <th class="pb-2 font-semibold">Nama Label</th>
+                                    <th class="pb-2 text-right font-semibold">Jumlah Sampel</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stats-table-body" class="divide-y divide-slate-100 text-slate-700 font-semibold">
+                                <!-- Diisi dinamis -->
+                                <tr>
+                                    <td colspan="2" class="py-4 text-center text-slate-400 italic">Memuat statistik dataset...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Card 3: AI Training Panel -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Latih Ulang Model AI</h2>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Setelah selesai mengumpulkan data baru, lakukan pelatihan ulang agar kecerdasan buatan (AI) dapat mengenali label kustom Anda.
+                    </p>
+
+                    <!-- Train Button -->
+                    <button id="btn-train" class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>Latih Model AI (<span id="train-mode-label">Statis</span>)</span>
+                    </button>
+
+                    <!-- Training Log Console -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase">
+                            <span>Log Pelatihan Konsol:</span>
+                            <span id="training-status-text" class="text-slate-500">Idle</span>
+                        </div>
+                        <div id="log-console" class="w-full h-36 bg-slate-900 text-slate-300 font-mono text-[10px] p-3 rounded-xl overflow-y-auto leading-relaxed border border-slate-800 whitespace-pre-wrap">
+[Konsol Siap - Klik latih model di atas untuk melihat progres...]</div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200/60 py-6 text-center text-xs text-slate-400 mt-12">
+        &copy; 2026 BECOOL. Dikembangkan demi Aksesibilitas Komunikasi Universal.
+    </footer>
+
+</body>
+
+</html>

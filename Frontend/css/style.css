@@ -1,0 +1,157 @@
+/* Global styles for BE COOL */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+/* Flip horizontal agar tidak mirror */
+  #webcam {
+    transform: scaleX(-1);
+  }
+
+  /* Kalau mau flip vertikal */
+  /* #webcam { transform: scaleY(-1); } */
+
+  /* Kalau mau flip dua arah sekaligus */
+  /* #webcam { transform: scale(-1, -1); } */
+
+/* css/style.css */
+
+/* Global styles for smooth scrolling and clean font */
+html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* 1. On Load Animations (Hero Section) */
+
+/* Initial state: text hidden below */
+.animate-on-load-text {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Initial state: image hidden and scaled down */
+.animate-on-load-image {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* Animation classes applied by JS on page load */
+.animate-on-load-text.loaded {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1.2s ease, transform 1s ease;
+}
+
+.animate-on-load-image.loaded {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1.5s ease-out, transform 1.2s ease-out;
+}
+
+
+/* 2. On Scroll Animations (Generic for elements on page) */
+
+/* The base animate-on-scroll class sets the shared transition behavior */
+.animate-on-scroll {
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform; /* Performance optimization for browser rendering */
+}
+
+/* Key class applied by JS when element enters the viewport */
+.is-visible {
+    opacity: 1 !important;
+    transform: translate(0) !important;
+}
+
+
+/* 3. Dynamic Element Styles */
+
+/* Documentation PDF image in modal */
+#documentation-modal .aspect-video {
+    background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=500&auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* 4. Modal Styles */
+
+/* Initial states for modal overlay and content */
+#documentation-modal,
+#volunteer-modal {
+    opacity: 0;
+    pointer-events: none; /* Can't click when hidden */
+}
+
+/* Visible class for modal overlay */
+#documentation-modal.modal-visible,
+#volunteer-modal.modal-visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: opacity 0.3s ease;
+}
+
+/* Modal content slide-up animation */
+.animate-modal {
+    transform: translateY(-20px);
+}
+
+.modal-visible .animate-modal {
+    transform: translateY(0);
+    transition: transform 0.4s ease-out;
+}
+
+.interactive-border {
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .interactive-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(13, 148, 136, 0.6), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .interactive-border:hover::before {
+    opacity: 1;
+  }
+
+  .card {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px; /* ketebalan garis */
+    background: linear-gradient(  
+      90deg,
+      transparent,
+      rgba(13, 148, 136, 0.8),
+      transparent
+    );
+    /* -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0); */
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }

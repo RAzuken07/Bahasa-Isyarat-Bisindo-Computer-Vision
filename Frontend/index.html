@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BE COOL - Belajar Bahasa Isyarat Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="js/app.js" defer></script>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden">
+
+    <nav class="bg-white/30 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="text-teal-600 text-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-hands-asl-interpreting"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-teal-900">BECOOL</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-600">
+                <a href="index.html" class="hover:text-teal-600 transition">Beranda</a>
+                <a href="prediction_hand.html" class="hover:text-teal-600 transition">Prediksi</a>
+                <!-- <a href="dataset_collector.html" class="hover:text-teal-600 transition">Buat Dataset</a> -->
+                <a href="about.html" class="hover:text-teal-600 transition">Tentang Kami</a>
+            </div>
+
+            <button class="md:hidden text-teal-900 focus:outline-none" id="mobile-menu-button">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div class="md:hidden hidden bg-white/95 backdrop-blur-sm px-6 pb-6 pt-2 border-t border-slate-100" id="mobile-menu">
+            <div class="flex flex-col gap-4 text-sm font-medium text-slate-600">
+                <a href="index.html" class="hover:text-teal-600 transition py-2">Beranda</a>
+                <a href="prediction_hand.html" class="hover:text-teal-600 transition py-2">Prediksi</a>
+                <a href="dataset_collector.html" class="hover:text-teal-600 transition py-2">Buat Dataset</a>
+                <a href="about.html" class="hover:text-teal-600 transition py-2">Tentang Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative overflow-hidden pt-12 pb-20 md:py-24 bg-gradient-to-b from-teal-70/20 to-transparent">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-8 text-left animate-on-load-text">
+                <!-- <div class="inline-flex items-center gap-1.5 bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1.5 rounded-full border border-teal-100">
+                    <i class="fa-solid fa-sparkles text-[10px]"></i> #SemuaBisaBerkomunikasi
+                </div> -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+                    Belajar Bahasa Isyarat <br>
+                    <span class="text-teal-600">Jadi Lebih Mudah</span>, <br>
+                    Menyenangkan, & Bermakna.
+                </h1>
+                <p class="text-slate-500 text-base md:text-lg max-w-xl leading-relaxed">
+                    BE COOL adalah sekolah bahasa isyarat online dengan teknologi AI untuk membantumu belajar, memahami, dan berkomunikasi tanpa batas.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="prediction_hand.html" class="px-6 py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-teal-600/20 transition flex items-center gap-2 group">
+                        Coba Prediksi Isyarat
+                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 relative flex justify-center animate-on-load-image">
+                <div class="w-full max-w-[420px] aspect-[4/5] bg-teal-50 rounded-3xl relative flex flex-col justify-end overflow-hidden border border-teal-100/50 shadow-2xl shadow-teal-100/30 group">
+                    <img src="assets/gambar1.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-[1.03] transition-transform duration-700 ease-in-out">
+                    
+                    <div class="relative z-10 space-y-4 text-center pb-8 p-6">
+                        <div class="flex justify-center gap-5 text-teal-600">
+                            <div class="bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center justify-center text-4xl w-20 h-20 group-hover:-translate-y-1 transition-transform">
+                                <i class="fa-solid fa-hand-peace"></i>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center justify-center text-4xl w-20 h-20 group-hover:-translate-y-1.5 transition-transform delay-75">
+                                <i class="fa-solid fa-hand-spock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pengenalan Model -->
+    <section class="py-16 bg-white" id="features">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition group animate-on-scroll opacity-0 translate-y-8 backdrop-blur-lg">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-2xl font-bold group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mt-5 mb-3 text-lg">AI Canggih</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Pengenalan isyarat tangan secara real-time dengan akurasi tingkat tinggi.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition group animate-on-scroll opacity-0 translate-y-8 delay-100">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-2xl font-bold group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mt-5 mb-3 text-lg">Belajar Interaktif</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Video kurikulum, kuis adaptif, & tutor cerdas AI untuk pengalaman belajar optimal.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition group animate-on-scroll opacity-0 translate-y-8 delay-200">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-2xl font-bold group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mt-5 mb-3 text-lg">Pantau Perkembangan</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Lacak statistik harian, tingkat penguasaan modul, dan akurasi gerakmu dengan mudah.</p>
+                </div>
+                
+                <div class="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition group animate-on-scroll opacity-0 translate-y-8 delay-300">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-2xl font-bold group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 mt-5 mb-3 text-lg">Komunitas Positif</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Bergabung dengan jejaring sosial komunitas inklusi luas yang saling mendukung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cara Kerja Be Cool -->
+    <section class="py-20 bg-slate-50/50 border-y border-slate-100" id="how-it-works">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">Cara Kerja <span class="text-teal-600">BE COOL</span></h2>
+            <p class="text-slate-500 text-base mt-3 max-w-lg mx-auto leading-relaxed">Tiga langkah mudah untuk menguasai komunikasi bahasa isyarat menggunakan platform cerdas kami.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 mt-16 items-start">
+                
+                <div class="flex flex-col items-center space-y-5 animate-on-scroll opacity-0 translate-y-8">
+                    <div class="w-12 h-12 rounded-full bg-teal-600 text-white font-bold flex items-center justify-center text-base shadow-xl shadow-teal-600/30 group-hover:scale-105 transition-transform">1</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Bentuk Gerakan Isyarat</h3>
+                    <p class="text-slate-500 text-sm max-w-xs leading-relaxed">AI akan mendeteksi setiap bentuk gerakan bahasa isyarat yang Anda lakukan.</p>
+                    <div class="w-full max-w-[240px] aspect-[4/3] bg-white rounded-2xl shadow-xl shadow-slate-100/80 border border-slate-100 p-4 mt-3 flex items-center justify-center">
+                         <img src="assets/image.png" alt="" class="h-40">
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center space-y-5 animate-on-scroll opacity-0 translate-y-8 delay-150">
+                    <div class="w-12 h-12 rounded-full bg-teal-600 text-white font-bold flex items-center justify-center text-base shadow-xl shadow-teal-600/30 group-hover:scale-105 transition-transform">2</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Gunakan Kamera</h3>
+                    <p class="text-slate-500 text-sm max-w-xs leading-relaxed">Aktifkan webcam untuk memindai gerakan tangan secara langsung.</p>
+                    <div class="w-full max-w-[240px] aspect-[4/3] bg-white rounded-2xl shadow-xl shadow-slate-100/80 border border-slate-100 p-4 mt-3 flex items-center justify-center">
+                        <img src="assets/image copy.png" alt="" class="h-40">
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center space-y-5 animate-on-scroll opacity-0 translate-y-8 delay-300">
+                    <div class="w-12 h-12 rounded-full bg-teal-600 text-white font-bold flex items-center justify-center text-base shadow-xl shadow-teal-600/30 group-hover:scale-105 transition-transform">3</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Tingkatkan Skill</h3>
+                    <p class="text-slate-500 text-sm max-w-xs leading-relaxed">Dapatkan penilaian instan dari AI, tingkatkan akurasi, dan kuasai materi.</p>
+                    <div class="w-full max-w-[240px] aspect-[4/3] bg-white rounded-2xl shadow-xl shadow-slate-100/80 border border-slate-100 p-4 mt-3 flex items-center justify-center">
+                        <img src="assets/image copy 2.png" alt="" class="h-40">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Dampak Komunitas -->
+    <section class="py-24 bg-white" id="community-impact">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-1.5 bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1.5 rounded-full border border-teal-100 mb-4 animate-on-scroll opacity-0">
+                <i class="fa-solid fa-heart text-[10px]"></i> Dampak Nyata Komunitas
+            </div>
+            <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight animate-on-scroll opacity-0">Menjembatani Komunikasi, <br class="sm:hidden"> Membangun Kesetaraan</h2>
+            <p class="text-slate-500 text-base mt-3 max-w-lg mx-auto leading-relaxed animate-on-scroll opacity-0">Platform ini sepenuhnya digerakkan oleh relawan dan komunitas untuk menciptakan ruang publik yang inklusif bagi semua orang.</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-12 p-8 bg-slate-50 rounded-3xl border border-slate-100 text-left animate-on-scroll opacity-0 translate-y-6">
+                <div class="p-2 space-y-1">
+                    <p class="text-4xl md:text-5xl font-extrabold text-teal-600" id="stat-schools" data-end-value="45">45+</p>
+                    <p class="text-sm font-bold text-slate-700">Sekolah & Kampus</p>
+                    <p class="text-xs text-slate-400">Telah mengadopsi modul isyarat kami.</p>
+                </div>
+                <div class="p-2 border-l border-slate-200 space-y-1 pl-6">
+                    <p class="text-4xl md:text-5xl font-extrabold text-teal-600" id="stat-videos" data-end-value="8500">8.500+</p>
+                    <p class="text-sm font-bold text-slate-700">Video Isyarat</p>
+                    <p class="text-xs text-slate-400">Telah disumbangkan oleh kontributor.</p>
+                </div>
+                <div class="p-2 md:border-l border-slate-200 space-y-1 pl-6">
+                    <p class="text-4xl md:text-5xl font-extrabold text-teal-600" id="stat-friends" data-end-value="120">120+</p>
+                    <p class="text-sm font-bold text-slate-700">Teman Tuli Terbantu</p>
+                    <p class="text-xs text-slate-400">Mendapatkan akses materi setara.</p>
+                </div>
+                <div class="p-2 border-l border-slate-200 space-y-1 pl-6">
+                    <p class="text-4xl md:text-5xl font-extrabold text-teal-600" id="stat-access" data-end-value="100">100%</p>
+                    <p class="text-sm font-bold text-slate-700">Akses Terbuka</p>
+                    <p class="text-xs text-slate-400">Platform bebas biaya & nirlaba.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16 items-stretch">
+                
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between text-left shadow-sm group animate-on-scroll opacity-0 translate-y-8">
+                    <div>
+                        <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-400 relative overflow-hidden">
+                            <img src="assets/sosialisasi.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                            <span class="absolute bottom-3 left-3 bg-teal-600 text-white font-bold text-[10px] px-2 py-0.5 rounded">Sosialisasi</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="text-lg font-bold text-slate-900">Isyarat di Ruang Publik</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">Gerakan edukasi gratis bagi staf pelayanan publik untuk memahami dasar alfabet jari dan sapaan darurat.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 hover:text-teal-700 transition documentation-modal-trigger">
+                            Lihat Dokumentasi
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border-2 border-teal-600 overflow-hidden flex flex-col justify-between text-left shadow-2xl shadow-teal-100 group animate-on-scroll opacity-0 translate-y-8 delay-150">
+                    <div>
+                        <div class="w-full aspect-[4/3] bg-teal-50 flex items-center justify-center text-slate-400 relative overflow-hidden">
+                            <img src="assets/Dataset AI.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                            <span class="absolute bottom-3 left-3 bg-teal-600 text-white font-bold text-[10px] px-2 py-0.5 rounded">Riset AI</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="text-lg font-bold text-slate-900">Pengembangan Dataset Terbuka</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">Bekerja sama dengan ahli bahasa isyarat lokal untuk mengumpulkan ribuan sampel gerak tangan guna meningkatkan akurasi pemindaian AI.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 hover:text-teal-700 transition">
+                            <span>Buka Repositori Riset</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between text-left shadow-sm group animate-on-scroll opacity-0 translate-y-8 delay-300">
+                    <div>
+                        <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-400 relative overflow-hidden">
+                            <img src="assets/relawan.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                            <span class="absolute bottom-3 left-3 bg-teal-600 text-white font-bold text-[10px] px-2 py-0.5 rounded">Kolaborasi</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="text-lg font-bold text-slate-900">Program Relawan Pengajar</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">Wadah bagi teman dengar untuk belajar dari mentor tuli dalam sesi tatap muka digital, mempererat inklusi tanpa sekat.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                         <button class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 hover:text-teal-700 transition volunteer-modal-trigger">
+                            Gabung Jadi Relawan
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50/40 border-t border-slate-100" id="testimonials">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight animate-on-scroll opacity-0">Apa Kata Mereka?</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16 text-left">
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-5 animate-on-scroll opacity-0 translate-y-8">
+                    <div class="text-amber-500 text-sm flex gap-0.5">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">
+                        "BE COOL membantu saya belajar bahasa isyarat dari nol hingga bisa berkomunikasi dengan percaya diri."
+                    </p>
+                    <div class="flex items-center gap-4 pt-3">
+                        <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Dinda A.">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Dinda A.</h4>
+                            <p class="text-xs text-slate-400 font-medium">Siswa Pro</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-5 animate-on-scroll opacity-0 translate-y-8 delay-150">
+                    <div class="text-amber-500 text-sm flex gap-0.5">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">
+                        "Fitur prediksi isyaratnya akurat banget! Belajar jadi lebih seru dan interaktif."
+                    </p>
+                    <div class="flex items-center gap-4 pt-3">
+                        <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Rizky M.">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Rizky M.</h4>
+                            <p class="text-xs text-slate-400 font-medium">Siswa Pro</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-5 animate-on-scroll opacity-0 translate-y-8 delay-300">
+                    <div class="text-amber-500 text-sm flex gap-0.5">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">
+                        "Tutor AI-nya sabar dan membantu. Saya jadi lebih semangat setiap hari!"
+                    </p>
+                    <div class="flex items-center gap-4 pt-3">
+                        <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=80" alt="Sofie L.">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Sofie L.</h4>
+                            <p class="text-xs text-slate-400 font-medium">Siswa Premium</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-t border-slate-100" id="contact">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                
+                <div class="md:col-span-5 space-y-6 animate-on-scroll opacity-0 translate-x-12">
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 leading-snug">Punya Pertanyaan? <br> Kami Siap Membantumu!</h2>
+                    <p class="text-slate-500 text-base leading-relaxed">Hubungi kami dan tim BE COOL akan merespons secepat mungkin.</p>
+                    
+                    <div class="space-y-5 pt-3 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center mt-0.5 flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-800">Email</p>
+                                <p class="text-slate-500">halo@becool.id</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-teal-50/20 space-y-5 animate-on-scroll opacity-0 translate-x-12 delay-150">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-700">Nama Lengkap</label>
+                            <input type="text" placeholder="Nama lengkap" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-100 transition">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-700">Email</label>
+                            <input type="email" placeholder="email@contoh.com" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-100 transition">
+                        </div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-700">Pesan</label>
+                        <textarea rows="5" placeholder="Tulis pesanmu di sini..." class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-100 transition resize-none"></textarea>
+                    </div>
+                    <button class="w-full py-4 px-6 bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-teal-600/20 transition text-center flex items-center justify-center gap-2">
+                        Kirim Pesan
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200/60 pt-16 pb-10 text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10 mb-10">
+            <div class="md:col-span-4 space-y-4">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-teal-600 text-2xl"><i class="fa-solid fa-hands-asl-interpreting"></i></span>
+                    <span class="text-xl font-extrabold text-slate-900 tracking-tight">BECOOL</span>
+                </div>
+                <p class="text-slate-400 max-w-xs leading-relaxed">Membangun dunia yang inklusif melalui bahasa isyarat.</p>
+            </div>
+
+            <div class="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="space-y-3">
+                    <h4 class="font-bold text-slate-900 text-[15px]">Navigasi</h4>
+                    <ul class="space-y-2.5 text-slate-400 font-medium">
+                        <li><a href="#" class="hover:text-teal-600 transition">Beranda</a></li>
+                        <li><a href="prediction_hand.html" class="hover:text-teal-600 transition">Prediksi</a></li>
+                        <li><a href="about.html" class="hover:text-teal-600 transition">Tentang Kami</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 border-t border-slate-200/50 pt-8 text-center text-xs text-slate-300 font-medium">
+            &copy; 2024 BECOOL Indonesia. Hak Cipta Dilindungi. nirlaba & inklusif.
+        </div>
+    </footer>
+
+    <div id="documentation-modal" class="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-6 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative animate-modal">
+            <button class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 modal-close focus:outline-none">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-6">Dokumentasi Kegiatan</h3>
+            <div class="aspect-video bg-slate-100 rounded-2xl flex items-center justify-center text-slate-300 mb-6">
+                <i class="fa-solid fa-file-pdf text-6xl text-teal-100"></i>
+            </div>
+            <div class="space-y-4 text-slate-500 text-sm leading-relaxed">
+                <p>Dokumentasi ini berisi foto-foto dan laporan kegiatan sosialisasi bahasa isyarat untuk staf pelayanan publik di Jakarta. Kegiatan ini bertujuan untuk meningkatkan kesadaran inklusi sosial dan memberikan kemampuan komunikasi dasar di tempat-tempat penting seperti rumah sakit dan stasiun.</p>
+                <p>Laporan PDF mencakup modul pengajaran dasar dan umpan balik dari peserta. Anda dapat mengunduh laporan lengkapnya untuk keperluan riset atau kolaborasi.</p>
+            </div>
+            <div class="mt-8 flex justify-end gap-3">
+                <button class="px-5 py-2.5 bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl modal-close hover:bg-slate-200 transition">Tutup</button>
+                <button class="px-5 py-2.5 bg-teal-600 text-white font-semibold text-xs rounded-xl shadow-md shadow-teal-600/20 hover:bg-teal-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-download text-xs"></i>
+                    Unduh PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="volunteer-modal" class="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-6 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-8 relative animate-modal">
+            <button class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 modal-close focus:outline-none">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-6">Gabung Jadi Relawan</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-8">Daftar sebagai relawan di BE COOL Indonesia dan bantu kami menciptakan dunia yang lebih inklusif. Anda bisa berkontribusi sebagai guru bahasa isyarat, kreator konten, atau pengembang teknologi.</p>
+            <form class="space-y-5">
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-700">Nama Lengkap</label>
+                    <input type="text" placeholder="Nama lengkap" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-teal-500 transition">
+                </div>
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-700">Email</label>
+                    <input type="email" placeholder="email@contoh.com" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-teal-500 transition">
+                </div>
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-700">Minat Relawan</label>
+                    <select class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:border-teal-500 transition">
+                        <option>Guru Isyarat</option>
+                        <option>Kreator Konten</option>
+                        <option>Pengembang AI/Teknis</option>
+                    </select>
+                </div>
+                <div class="mt-8 flex justify-end gap-3 pt-4">
+                    <button type="button" class="px-5 py-2.5 bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl modal-close hover:bg-slate-200 transition">Batal</button>
+                    <button type="submit" class="px-6 py-3.5 bg-teal-600 text-white font-semibold text-xs rounded-xl shadow-lg shadow-teal-600/20 hover:bg-teal-700 transition flex items-center gap-2">
+                        <i class="fa-solid fa-check text-xs"></i>
+                        Kirim Pendaftaran
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

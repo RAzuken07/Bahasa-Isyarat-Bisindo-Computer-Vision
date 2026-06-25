@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Bahasa Isyarat AI | SIGNS AI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- MediaPipe dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+    <script src="js/hands_detection.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="text-teal-600 text-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-hands-asl-interpreting"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-teal-900">BE COOL</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-600">
+                <a href="index.html" class="hover:text-teal-600 transition">Beranda</a>
+                <a href="prediction_hand.html" class="hover:text-teal-600 transition">Prediksi</a>
+                <!-- <a href="dataset_collector.html" class="hover:text-teal-600 transition">Buat Dataset</a> -->
+                <a href="about.html" class="hover:text-teal-600 transition">Tentang Kami</a>
+            </div>
+
+            <!-- <div class="flex items-center gap-3">
+                <button class="px-5 py-2.5 text-[15px] font-semibold text-slate-700 hover:text-teal-600 transition">Masuk</button>
+                <button class="px-5 py-2.5 text-[15px] font-semibold bg-teal-600 hover:bg-teal-700 text-white rounded-xl shadow-sm shadow-teal-600/10 transition">Daftar Gratis</button>
+            </div> -->
+        </div>
+    </nav>
+
+    <!-- 2. MAIN PREDICTION WORKSPACE -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+            <!-- LEFT COLUMN: LIVE CAMERA INPUT (7 Cols) -->
+            <section class="lg:col-span-7 space-y-4">
+                <div class="bg-slate-950 rounded-2xl shadow-lg border border-slate-800 overflow-hidden relative group">
+
+                    <!-- Status Header Feed -->
+                    <!-- <div class="absolute top-4 left-4 z-20 bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide border border-slate-700 text-white flex items-center gap-2">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                        <span>Kamera Aktif (ASL Mode)</span>
+                    </div> -->
+
+                    <!-- Tech Info Feed overlay -->
+                    <!-- <div class="absolute top-4 right-4 z-20 bg-slate-900/90 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono border border-slate-700 text-blue-400" id="fps-box">FPS: 0</div> -->
+
+                    <!-- Webcam Feed Box (Menggunakan Umpan Kamera Riil) -->
+                    <div
+                        class="relative w-full aspect-[16/10] bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <!-- Video Feed Umpan Kamera Riil -->
+                        <video id="webcam"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-[1.01] transition-transform duration-500 transform -scale-x-100"
+                            autoplay playsinline muted></video>
+                        <!-- Canvas overlay for MediaPipe mesh rendering -->
+                        <canvas id="canvas"
+                            class="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"></canvas>
+                        <!-- Fallback jika Kamera Mati / Belum Diizinkan -->
+                        <div id="webcam-fallback"
+                            class="absolute inset-0 w-full h-full bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-4 hidden">
+                            <i class="fa-solid fa-video-slash text-5xl text-slate-600 animate-pulse"></i>
+                            <span class="text-xs font-semibold">Kamera Dinonaktifkan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Pencahayaan & Akurasi -->
+                <!-- <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex gap-3 text-blue-900">
+                    <i class="fa-solid fa-circle-info text-lg mt-0.5 text-blue-500"></i>
+                    <div class="text-xs space-y-0.5">
+                        <p class="font-bold">Tips Optimalisasi Deteksi AI</p>
+                        <p class="text-blue-700 leading-relaxed">Hindari latar belakang yang terlalu ramai atau memiliki warna senada dengan warna kulit Anda untuk mencegah gangguan pembacaan sensor matriks.</p>
+                    </div>
+                </div> -->
+            </section>
+
+            <!-- RIGHT COLUMN: AI PREDICTION OUTPUT & CONTROLS (5 Cols) -->
+            <section class="lg:col-span-5 space-y-4">
+
+                <!-- Prediction Output Card -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center space-y-4">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Prediction Output</p>
+
+                    <div class="space-y-1 py-2">
+                        <h1 id="prediction-text" class="text-4xl font-black text-slate-900 tracking-tight">PREDIKSI: -
+                        </h1>
+                        <p id="confidence-text"
+                            class="text-sm font-semibold text-emerald-600 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-circle-check"></i> Akurasi: 0%
+                        </p>
+                    </div>
+
+                    <div
+                        class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- <button id="btn-record-gesture"
+                            class="flex items-center gap-3 p-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl font-bold text-xs transition text-left">
+                            <span
+                                class="w-7 h-7 bg-blue-600 text-white rounded-lg flex items-center justify-center text-[11px]"><i
+                                    class="fa-solid fa-microphone"></i></span>
+                            <div>
+                                <p>Rekam Isyarat</p>
+                                <p class="text-[9px] text-blue-500 font-normal">Mulai rekam gerakan baru</p>
+                            </div>
+                        </button> -->
+                        <button id="btn-toggle-mode"
+                            class="flex items-center gap-3 p-3 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-xl font-bold text-xs transition text-left">
+                            <span
+                                class="w-7 h-7 bg-teal-600 text-white rounded-lg flex items-center justify-center text-[11px]"><i
+                                    class="fa-solid fa-font"></i></span>
+                            <div>
+                                <p>Mode: Ejaan Abjad</p>
+                                <p class="text-[9px] text-teal-500 font-normal">Ubah ke kata gerakan</p>
+                            </div>
+                        </button>
+                        <button id="btn-reset-prediction"
+                            class="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl font-bold text-xs transition text-left">
+                            <span
+                                class="w-7 h-7 bg-slate-200 text-slate-600 rounded-lg flex items-center justify-center text-[11px]"><i
+                                    class="fa-solid fa-rotate"></i></span>
+                            <div>
+                                <p>Ulangi Prediksi</p>
+                                <p class="text-[9px] text-slate-400 font-normal">Bersihkan memori sensor</p>
+                            </div>
+                        </button>
+                        <!-- <button
+                            class="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl font-bold text-xs transition text-left">
+                            <span
+                                class="w-7 h-7 bg-slate-200 text-slate-600 rounded-lg flex items-center justify-center text-[11px]"><i
+                                    class="fa-solid fa-earth-americas"></i></span>
+                            <div>
+                                <p>Ganti Bahasa (ASL)</p>
+                                <p class="text-[9px] text-slate-400 font-normal">Ubah kamus rujukan dasar</p>
+                            </div>
+                        </button> -->
+                        <button id="btn-toggle-camera"
+                            class="flex items-center gap-3 p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-xl font-bold text-xs transition text-left w-full">
+                            <span id="toggle-camera-icon-bg"
+                                class="w-7 h-7 bg-red-600 text-white rounded-lg flex items-center justify-center text-[11px]"><i
+                                    id="toggle-camera-icon" class="fa-solid fa-video"></i></span>
+                            <div>
+                                <p id="toggle-camera-text">Matikan Kamera</p>
+                                <p id="toggle-camera-subtext" class="text-[9px] text-red-400 font-normal">Hentikan akses
+                                    hardware</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h3
+                        class="font-bold text-xs text-slate-400 uppercase tracking-wider flex items-center justify-between">
+                        <span>Riwayat Kata Terdeteksi</span>
+                        <button id="btn-clear-history"
+                            class="text-[10px] text-blue-600 hover:underline font-bold lowercase">Bersihkan</button>
+                    </h3>
+                    <div id="history-log"
+                        class="divide-y divide-slate-100 max-h-32 overflow-y-auto text-xs font-semibold text-slate-700 pr-1">
+                        <!-- Riwayat deteksi akan ditambahkan secara dinamis di sini -->
+                        <div class="py-2.5 text-center text-slate-400 text-[11px] italic">Belum ada kata terdeteksi
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons Menu -->
+                <!--                       <p class="text-[9px] text-slate-400 font-normal">Bersihkan memori sensor</p>
+                        </div>
+                    </button>
+                    <button class="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl font-bold text-xs transition text-left">
+                        <span class="w-7 h-7 bg-slate-200 text-slate-600 rounded-lg flex items-center justify-center text-[11px]"><i class="fa-solid fa-earth-americas"></i></span>
+                        <div>
+                            <p class="text-[9px] text-slate-400 font-normal">Ubah kamus rujukan dasar</p>
+                        </div>
+                    </button>
+                    <button id="btn-toggle-camera" class="flex items-center gap-3 p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-xl font-bold text-xs transition text-left w-full">
+                        <span id="toggle-camera-icon-bg" class="w-7 h-7 bg-red-600 text-white rounded-lg flex items-center justify-center text-[11px]"><i id="toggle-camera-icon" class="fa-solid fa-video"></i></span>
+                        <div>
+                            <p id="toggle-camera-text">Matikan Kamera</p>
+                            <p id="toggle-camera-subtext" class="text-[9px] text-red-400 font-normal">Hentikan akses hardware</p>
+                        </div>
+                    </button>
+                </div> -->
+
+            </section>
+
+        </div>
+    </main>
+</body>
+
+</html>

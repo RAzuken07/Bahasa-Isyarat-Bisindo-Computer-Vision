@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Belajar Bahasa Isyarat | SIGNS AI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="text-teal-600 text-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-hands-asl-interpreting"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-teal-900">BE COOL</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-600">
+                <a href="index.html" class="hover:text-teal-600 transition">Beranda</a>
+                <a href="prediction_hand.html" class="hover:text-teal-600 transition">Prediksi</a>
+                <a href="learning.html" class="hover:text-teal-600 transition">Belajar</a>
+                <a href="about.html" class="hover:text-teal-600 transition">Tentang Kami</a>
+            </div>
+
+            <!-- <div class="flex items-center gap-3">
+                <button class="px-5 py-2.5 text-[15px] font-semibold text-slate-700 hover:text-teal-600 transition">Masuk</button>
+                <button class="px-5 py-2.5 text-[15px] font-semibold bg-teal-600 hover:bg-teal-700 text-white rounded-xl shadow-sm shadow-teal-600/10 transition">Daftar Gratis</button>
+            </div> -->
+        </div>
+    </nav>
+
+    <!-- 2. MAIN LEARNING WORKSPACE -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- LEFT COLUMN: CURRICULUM & LESSONS (5 Cols) -->
+            <section class="lg:col-span-5 space-y-4">
+                
+                <!-- Card Informasi Progres Modul -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">Modul Dasar 1</span>
+                    <h1 class="text-xl font-bold text-slate-900 mt-2">Abjad & Kata Sapaan Utama</h1>
+                    <p class="text-slate-500 text-sm mt-1">Pelajari dasar komunikasi isyarat untuk interaksi sehari-hari.</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="mt-4">
+                        <div class="flex justify-between text-xs font-medium text-slate-500 mb-1">
+                            <span>Progres Belajar</span>
+                            <span>40% Selesai (2/5 Materi)</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-blue-600 h-full rounded-full" style="width: 40%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daftar Urutan Materi Belajar -->
+                <div class="space-y-3">
+                    
+                    <!-- Materi 1: Selesai -->
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between opacity-75 hover:opacity-100 transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm text-slate-800">01. Abjad A - E</h3>
+                                <p class="text-xs text-slate-400">Isyarat ejaan jari dasar</p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-emerald-600 font-medium bg-emerald-50 px-2 py-0.5 rounded">+50 XP</span>
+                    </div>
+
+                    <!-- Materi 2: Aktif / Sedang Dipelajari -->
+                    <div class="bg-white p-4 rounded-xl border-2 border-blue-600 shadow-sm flex items-center justify-between cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
+                                02
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm text-slate-900">02. Kata Sapaan: "HELLO"</h3>
+                                <p class="text-xs text-blue-600 font-medium flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse"></span> Sedang Aktif
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-blue-600 font-medium bg-blue-50 px-2 py-0.5 rounded">+100 XP</span>
+                    </div>
+
+                    <!-- Materi 3: Terkunci -->
+                    <div class="bg-slate-100/50 p-4 rounded-xl border border-slate-200/60 flex items-center justify-between opacity-60">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm text-slate-700">03. Sapaan: "TERIMA KASIH"</h3>
+                                <p class="text-xs text-slate-400">Membuka interaksi sopan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Materi 4: Terkunci -->
+                    <div class="bg-slate-100/50 p-4 rounded-xl border border-slate-200/60 flex items-center justify-between opacity-60">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm text-slate-700">04. Memperkenalkan Nama</h3>
+                                <p class="text-xs text-slate-400">Merangkai huruf menjadi nama</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Pintar Box -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3 text-amber-900">
+                    <i class="fa-solid fa-lightbulb text-lg mt-0.5 text-amber-500"></i>
+                    <div class="text-xs space-y-1">
+                        <p class="font-bold">Tips Belajar Hari Ini</p>
+                        <p class="text-amber-800 leading-relaxed">Pastikan posisi telapak tangan Anda menghadap langsung ke arah kamera dan cari ruangan dengan pencahayaan yang terang agar AI dapat membaca gerakan sendi jari Anda dengan akurat.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: INTERACTIVE AI WORKSPACE (7 Cols) -->
+            <section class="lg:col-span-7 space-y-4">
+                
+                <!-- Main Screen Workspace Layout (Split-Panel di Dalam Monitor) -->
+                <div class="bg-slate-900 rounded-2xl shadow-lg overflow-hidden text-white relative border border-slate-800">
+                    
+                    <!-- Indikator Status AI Atas -->
+                    <div class="absolute top-4 left-4 z-20 bg-slate-900/80 backdrop-blur px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide border border-slate-700 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
+                        <span>AI Tutor Aktif</span>
+                    </div>
+
+                    <!-- Area Layar Kerja Utama (Kiri: Contoh Tutor / Kanan: Praktek Kamera User) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 bg-slate-950 min-h-[380px]">
+                        
+                        <!-- Panel Kiri: Panduan Model / Gambar Isyarat -->
+                        <div class="p-6 flex flex-col justify-between items-center border-b md:border-b-0 md:border-r border-slate-800 bg-slate-900/40">
+                            <div class="text-center mt-6">
+                                <span class="text-slate-400 text-xs uppercase font-bold tracking-wider">Ikuti Gerakan Ini</span>
+                                <h2 class="text-3xl font-black text-white mt-1">"HELLO"</h2>
+                            </div>
+                            
+                            <!-- Ilustrasi Avatar Bahasa Isyarat -->
+                            <div class="my-6 relative flex justify-center items-center">
+                                <div class="w-32 h-32 bg-blue-600/10 rounded-full border border-blue-500/30 absolute animate-pulse"></div>
+                                <i class="fa-solid fa-hands-asl-interpreting text-6xl text-blue-400 relative z-10"></i>
+                            </div>
+
+                            <p class="text-xs text-slate-400 text-center px-2 mb-2 leading-relaxed">Angkat tangan kanan setinggi telinga, gerakkan telapak tangan ke luar dengan lembut.</p>
+                        </div>
+
+                        <!-- Panel Kanan: Simulasi Kamera & Deteksi Pengguna -->
+                        <div class="relative bg-slate-900 flex flex-col justify-center items-center min-h-[250px] md:min-h-0">
+                            <!-- Video Feed Umpan Kamera Riil -->
+                            <video id="webcam" class="absolute inset-0 w-full h-full object-cover opacity-60" autoplay playsinline muted></video>
+                            <!-- Fallback jika Kamera Mati -->
+                            <div id="webcam-fallback" class="absolute inset-0 w-full h-full bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-4 hidden">
+                                <i class="fa-solid fa-video-slash text-4xl text-slate-600 animate-pulse"></i>
+                                <span class="text-[10px] font-semibold">Kamera Dinonaktifkan</span>
+                            </div>
+                            
+                            <!-- Overlay Kerangka Analisis AI -->
+                            <div class="absolute inset-0 bg-blue-900/10 backdrop-blur-[0.5px] flex flex-col justify-between p-4 z-10">
+                                <div class="self-end bg-slate-900/90 text-[10px] font-mono px-2 py-0.5 rounded border border-slate-700 text-blue-400">
+                                    FPS: 30 | Hand_Mesh: OK
+                                </div>
+                                
+                                <!-- Frame Pembantu Posisi -->
+                                <div class="self-center border-2 border-dashed border-blue-400/60 w-40 h-40 rounded-full flex items-center justify-center">
+                                    <span class="text-[9px] font-bold text-blue-200 bg-slate-900/80 px-2 py-0.5 rounded backdrop-blur">Posisikan Tangan di Sini</span>
+                                </div>
+
+                                <!-- Bar Status Deteksi Instan -->
+                                <div class="bg-blue-600/90 backdrop-blur text-center py-2 px-3 rounded-xl text-xs font-bold text-white shadow-lg border border-blue-400 flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    <span>Menunggu Isyarat Anda...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Menu Kontrol & Navigasi Bawah Layar -->
+                    <div class="bg-slate-900 px-6 py-4 border-t border-slate-800 flex flex-wrap gap-4 justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <button id="btn-toggle-camera" class="bg-slate-800 hover:bg-slate-700 text-slate-200 p-2.5 rounded-lg text-sm transition" title="Matikan/Aktifkan Kamera">
+                                <i id="toggle-camera-icon" class="fa-solid fa-video"></i>
+                            </button>
+                            <button class="bg-slate-800 hover:bg-slate-700 text-slate-200 p-2.5 rounded-lg text-sm transition" title="Ulang Gerakan Panduan">
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button class="px-4 py-2 text-sm font-semibold text-slate-400 hover:text-white transition">Lewati</button>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md transition flex items-center gap-2">
+                                <span>Verifikasi Isyarat Saya</span>
+                                <i class="fa-solid fa-circle-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil Evaluasi Akurasi Real-Time (Feedback Box) -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-bar text-blue-600"></i>
+                        <span>Analisis Real-Time Akurasi AI</span>
+                    </h3>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <p class="text-[11px] text-slate-400 font-medium">Sudut Jari</p>
+                            <p class="text-base font-extrabold text-emerald-600 mt-1">92% <span class="text-[10px] text-slate-400 font-normal">Sesuai</span></p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <p class="text-[11px] text-slate-400 font-medium">Posisi Lengan</p>
+                            <p class="text-base font-extrabold text-amber-500 mt-1">78% <span class="text-[10px] text-slate-400 font-normal">Perlu Angkat</span></p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <p class="text-[11px] text-slate-400 font-medium">Kecepatan</p>
+                            <p class="text-base font-extrabold text-slate-700 mt-1">Normal</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-400">
+        <p>&copy; 2026 SIGNS AI. Dikembangkan demi Aksesibilitas Komunikasi Universal.</p>
+    </footer>
+
+</body>
+<script>
+  const socket = new WebSocket("ws://127.0.0.1:8000/ws/fps");
+  socket.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    document.getElementById("fps-box").innerText = "FPS: " + data.fps;
+  };
+</script>
+</html>
