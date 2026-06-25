@@ -106,10 +106,10 @@ graph TD
 
 ## Tampilan Website
 # Home
-![Tampilan Home](frontend/assets/HomePage_web.png)
+![Tampilan Home](frontend/assets/HomePageWeb.png)
 
 # Prediction
-![Tampilan Prediction](frontend/assets/PredictionPage_web.png)
+![Tampilan Prediction](frontend/assets/PredictionPageWeb.png)
 
 # About
-![Tampilan About](frontend/assets/AboutPage_web.png)
+![Tampilan About](frontend/assets/AboutPageWeb.png)
